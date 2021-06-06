@@ -23,7 +23,7 @@ The purpose of this project is to analyze disaster data from Figure Eight to bui
 * App
   * run.py: Flask app and the user interface used to predict results and display them.
   * templates: folder containing the html templates
-## How to Run <a name="howto"></a>
+## How to <a name="howto"></a>
 below are sample bash commands to run the ETL, model, and app in terminal:
 
 'python process_data.py disaster_messages.csv disaster_categories.csv DisasterResponse.db'
