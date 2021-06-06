@@ -26,4 +26,4 @@ The purpose of this project is to analyze disaster data from Figure Eight to bui
 ## Results <a name="results"></a> 
 
 ## Licensing, Authors, and Acknowledgements<a name="licensing"></a> 
-Credit for the data goes to Figure Eight and Udacity
+Credit for the data goes to Figure Eight and Udacity.
