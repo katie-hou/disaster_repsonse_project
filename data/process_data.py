@@ -31,10 +31,14 @@ def clean_data(df):
     category_colnames = [i.split('-')[0] for i in row.values[0]]
     categories.columns = category_colnames
     for column in categories:
+        # set each value to be the last character of the string
         categories[column] = categories[column].astype(str).str[-1:]
+        # convert column from string to numeric
         categories[column] = categories[column].astype(int)
+    # add dummy variables for 'related' column
+    categories_new = pd.get_dummies(categories, prefix=['related'], columns=['related'])
     df.drop(['categories'], axis=1, inplace=True)
-    df = pd.concat([df,categories], join='inner', axis=1)
+    df = pd.concat([df,categories_new], join='inner', axis=1)
     df.drop_duplicates(inplace = True)
     print('Duplicates remaining:', df.duplicated().sum())
     return df
@@ -45,7 +49,7 @@ def save_data(df, database_filename):
     """
     filename = 'sqlite:///' + database_filename
     engine = create_engine(filename)
-    df.to_sql('disaster_response_df', engine, index=False)
+    df.to_sql('disaster_response_df', engine, index=False, if_exists = 'replace')
 
 def main():
     if len(sys.argv) == 4:
